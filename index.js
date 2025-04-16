@@ -7,6 +7,8 @@ import connectDB from "./lib/connectDB.js";
 import { clerkMiddleware } from "@clerk/express";
 import cors from "cors";
 import helmet from "helmet";
+import dotenv from "dotenv"
+dotenv.config();
 
 const app = express();
 app.use(clerkMiddleware());
@@ -38,7 +40,9 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(5000, () => {
+const port = process.env.PORT || 4000
+
+app.listen(4000, () => {
   connectDB();
-  console.log("Server is running!");
+  console.log(`Server is running on port ${port}!`);
 });
