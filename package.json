@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for blog website",
+  "license": "ISC",
+  "author": "Stanley Omali",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@clerk/express": "^1.4.4",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "imagekit": "^6.0.0",
+    "mongoose": "^8.13.2",
+    "react-toastify": "^11.0.5",
+    "svix": "^1.64.0"
+  }
+}
