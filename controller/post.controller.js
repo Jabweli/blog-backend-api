@@ -144,12 +144,18 @@ export const updatePost = async (req, res) => {
     return res.status(401).json({ message: "Not authenticated" });
   }
 
+  // generate slug
+  let slug = req.body.title.replace(/ /g, "-").toLowerCase();
+
+  const user = await User.findOne({ clerkUserId });
+
   const updatedPost = await Post.findOneAndUpdate(
-    { _id: req.params.id },
-    { $set: req.body },
+    { _id: req.params.id, user: user._id, },
+    { $set: { ...req.body, slug } },
     { new: true }
   );
-  if (!updatedPost) return res.status(404).json({ message: "Post not found" });
+  
+  if (!updatedPost) return res.status(400).json({ message: "You cannot update this post" });
   res.status(200).json(updatedPost);
 };
 
